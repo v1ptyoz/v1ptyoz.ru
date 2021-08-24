@@ -1,0 +1,19 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      # Setup key
+      - run: set -eu
+      - run: mkdir "$HOME/.ssh"
+      - run: echo "$" > "$HOME/.ssh/hosting"
+      - run: chmod 600 "$HOME/.ssh/hosting"
+      # Deploy
+      - run: rsync -e "ssh -p 20022 -i $HOME/.ssh/hosting -o StrictHostKeyChecking=no" --archive --compress --delete . j86205249@v1ptyoz.ru:/home/users/j/j86205249/domains/v1ptyoz.ru
