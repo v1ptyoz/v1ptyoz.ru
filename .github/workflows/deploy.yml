@@ -16,4 +16,4 @@ jobs:
       - run: echo "${{ secrets.hosting }}" > "$HOME/.ssh/key"
       - run: chmod 600 "$HOME/.ssh/key"
       # Deploy
-      - run: rsync -e "ssh -p 20022 -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . j86205249@v1ptyoz.ru:/home/users/j/j86205249/domains/v1ptyoz.ru
+      - run: rsync -e "ssh -p 22 -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . j86205249@v1ptyoz.ru:/home/users/j/j86205249/domains/v1ptyoz.ru
